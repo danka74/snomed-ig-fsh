@@ -2,7 +2,7 @@
 
 This IG uses [FSH](https://build.fhir.org/ig/HL7/fhir-shorthand/).
 
-To install (at least version 0.12.7!):
+To install (at least version 0.13.2):
 ```
 npm install -g fsh-sushi
 ```
