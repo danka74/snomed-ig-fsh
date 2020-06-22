@@ -1,0 +1,57 @@
+// VALUE SETS 
+
+ValueSet: SnomedBodyHeight
+Title: "Body Height Observable entity Codes"
+Description: "This value set contains concept codes for body height observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint << 248334005 | Length of body (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #248334005
+
+ValueSet: AllergyIntoleranceFindingCode
+Title: "Allergy-Intolerance Finding Code"
+Description: "This value set contains concept codes for allergy or intolerance clinical findings. It includes codes from [SNOMED](http://snomed.info/sct) where concept is-a 420134006 | Propensity to adverse reaction (finding) |"
+* codes from system http://snomed.info/sct where concept is-a #420134006
+
+ValueSet: SnomedBodyTemp
+Title: "Core body temperature Observable entity Code"
+Description: "This value set contains concept codes for core body temperature observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint << 276885007 | Core body temperature (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #276885007
+
+ValueSet: SnomedHeadCircum
+Title: "Head circumference Observable entity Code"
+Description: "This value set contains concept codes for head circumference observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 363812007 | Head circumference (observable entity) | MINUS << 248397001 | Head circumference centile (observable entity) |)"
+* codes from system http://snomed.info/sct where constraint = "(<< 363812007 | Head circumference (observable entity) | MINUS << 248397001 | Head circumference centile (observable entity) |)"
+
+ValueSet: SnomedOxygenSat
+Title: "Peripehral oxygen saturation Observable entity Code"
+Description: "This value set contains concept codes for peripheral oxygen saturation observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint <<431314004 | Peripheral oxygen saturation (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #431314004
+
+ValueSet: SnomedBodyWeightm
+Title: "Body weight Observable entity Code"
+Description: "This value set contains concept codes for body weight observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 27113001 | Body weight (observable entity) | MINUS (<< 248350002 | Reference weight (observable entity) | OR << 301334000 | Birth weight centile (observable entity) |))"
+* codes from system http://snomed.info/sct where constraint = "(<< 27113001 | Body weight (observable entity) | MINUS (<< 248350002 | Reference weight (observable entity) | OR << 301334000 | Birth weight centile (observable entity) |))"
+
+ValueSet: SnomedHeartRate
+Title: "Heart rate Observable entity Code"
+Description: "This value set contains concept codes for heart rate observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 364075005 | Heart rate (observable entity) | MINUS 428420003 | Target heart rate (observable entity) |)"
+* codes from system http://snomed.info/sct where constraint = "(<< 364075005 | Heart rate (observable entity) | MINUS 428420003 | Target heart rate (observable entity) |)"
+
+ValueSet: SnomedRespRate
+Title: "Respiratory rate Observable entity Code"
+Description: "This value set contains concept codes for respiratory rate observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint << 86290005 | Respiratory rate (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #86290005
+
+ValueSet: SnomedDiaBP
+Title: "Diastolic blood pressure Observable entity Code"
+Description: "This value set contains concept codes for diastolic blood pressure observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 271650006 | Diastolic blood pressure (observable entity) | MINUS (<< 314465004 | 24 hour diastolic blood pressure (observable entity) | OR << 716632005 | Baseline diastolic blood pressure (observable entity) | OR << 315613000 | Target diastolic blood pressure (observable entity) |))"
+* codes from system http://snomed.info/sct where constraint = "(<< 271650006 | Diastolic blood pressure (observable entity) | MINUS (<< 314465004 | 24 hour diastolic blood pressure (observable entity) | OR << 716632005 | Baseline diastolic blood pressure (observable entity) | OR << 315613000 | Target diastolic blood pressure (observable entity) |))"
+
+ValueSet: SnomedBMI
+Title: "BMI Observable entity Code"
+Description: "This value set contains concept codes for BMI observable entities. It includes the single code from [SNOMED](http://snomed.info/sct) 60621009 | Body mass index (observable entity) |"
+* http://snomed.info/sct#60621009 "Body mass index (observable entity)"
+
+ValueSet: SnomedSystBP
+Title: "Systolic blood pressure Observable entity Code"
+Description: "This value set contains concept codes for systolic blood pressure observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 271649006 | Systolic blood pressure (observable entity) | MINUS (<< 314464000 | 24 hour systolic blood pressure (observable entity) | OR << 716579001 | Baseline systolic blood pressure (observable entity) | OR << 315612005 | Target systolic blood pressure (observable entity) |))"
+* codes from system http://snomed.info/sct where constraint = "(<< 271649006 | Systolic blood pressure (observable entity) | MINUS (<< 314464000 | 24 hour systolic blood pressure (observable entity) | OR << 716579001 | Baseline systolic blood pressure (observable entity) | OR << 315612005 | Target systolic blood pressure (observable entity) |))"
+

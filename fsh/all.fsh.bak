@@ -1,0 +1,1216 @@
+// Begin input/pagecontent-from-template
+// End input/pagecontent-from-template
+
+// Begin input/images
+// Begin input/images/css
+// End input/images/css
+
+// End input/images
+
+// Begin input/pagecontent
+// End input/pagecontent
+
+// Begin input/resources-from-template
+// PROFILES 
+
+Profile: MyObservation
+Parent: Observation
+Id: myObservation
+Title: "My Observation Profile"
+Description: "A profile showing the use of XML to author profiles"
+* ^url = "http://example.org/fhir/uv/myig/StructureDefinition/myObservation"
+* component ^slicing.discriminator.type = #pattern
+* component ^slicing.discriminator.path = "code"
+* component ^slicing.ordered = false
+* component ^slicing.rules = #open
+* component 2..*
+* component contains Systolic 1..1
+* component[Systolic].valueQuantity.value MS
+* component[Systolic].valueQuantity.system = "http://unitsofmeasure.org"
+* component[Systolic].valueQuantity.system MS
+* component[Systolic].valueQuantity.code = #mm[Hg]
+* component[Systolic].valueQuantity.code MS
+* component contains Diastolic 1..1
+* component[Diastolic].valueQuantity.value MS
+* component[Diastolic].valueQuantity.system = "http://unitsofmeasure.org"
+* component[Diastolic].valueQuantity.system MS
+* component[Diastolic].valueQuantity.code = #mm[Hg]
+* component[Diastolic].valueQuantity.code MS
+
+// End input/resources-from-template
+
+// Begin input/includes
+// End input/includes
+
+// Begin input/profiles
+// PROFILES 
+
+Profile: AllergyIntoleranceFindingFocused
+Parent: AllergyIntolerance
+Id: AllergyIntolerance-FindingFocused
+Title: "Allergy Intolerance - Finding Focused"
+Description: "Profile of Allergy Intolerance resource with bindings to SNOMED CT Clinical findings as well as additional constraints to avoid overlap with the binding."
+* type 0..0
+* category 0..0
+* code from http://snomed.info/fhir/ValueSet/allergyintolerance-finding-code (extensible)
+* code.coding.system = "http://snomed.info/sct"
+* reaction.substance from http://hl7.org/fhir/ValueSet/substance-code (extensible)
+* reaction.manifestation from http://hl7.org/fhir/ValueSet/clinical-findings (extensible)
+* reaction.exposureRoute from http://hl7.org/fhir/ValueSet/route-codes (extensible)
+
+Profile: BodyWeight
+Parent: http://hl7.org/fhir/StructureDefinition/bodyweight
+Id: bodyweight
+Title: "Body Weight"
+Description: "Profile of HL7 body weight profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/bodyweight (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: AllergyIntoleranceSubstanceFocused
+Parent: AllergyIntolerance
+Id: AllergyIntolerance-SubstanceFocused
+Title: "Allergy Intolerance - Substance Focused"
+Description: "Profile of Allergy Intolerance resource with bindings to SNOMED CT Substances as well as additional constraints to avoid overlap with the binding."
+* category 0..0
+* code from http://hl7.org/fhir/ValueSet/substance-code (extensible)
+* code.coding.system = "http://snomed.info/sct"
+* reaction.substance from http://hl7.org/fhir/ValueSet/substance-code (extensible)
+* reaction.manifestation from http://hl7.org/fhir/ValueSet/clinical-findings (extensible)
+* reaction.exposureRoute from http://hl7.org/fhir/ValueSet/route-codes (extensible)
+
+Profile: BodyTemp
+Parent: http://hl7.org/fhir/StructureDefinition/bodytemp
+Id: bodytemp
+Title: "Body Temperature"
+Description: "Profile of HL7 body temperature profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/bodytemp (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: BodyHeight
+Parent: http://hl7.org/fhir/StructureDefinition/bodyheight
+Id: bodyheight
+Title: "Body Height"
+Description: "Profile of HL7 body height profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/bodyheight (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: OxygenSat
+Parent: http://hl7.org/fhir/StructureDefinition/oxygensat
+Id: oxygensat
+Title: "Oxygen Saturation"
+Description: "Profile of HL7 oxygen saturation profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/oxygensat (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: HeartRate
+Parent: http://hl7.org/fhir/StructureDefinition/heartrate
+Id: heartrate
+Title: "Heart Rate"
+Description: "Profile of HL7 heart rate profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/heartrate (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: HeadCircum
+Parent: http://hl7.org/fhir/StructureDefinition/headcircum
+Id: headcircum
+Title: "Head Circumference"
+Description: "Profile of HL7 head circumference profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/headcircum (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: BMI
+Parent: http://hl7.org/fhir/StructureDefinition/bmi
+Id: bmi
+Title: "BMI"
+Description: "Profile of HL7 BMI profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/bmi (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+Profile: BP
+Parent: http://hl7.org/fhir/StructureDefinition/bp
+Id: bp
+Title: "Blood pressure"
+Description: "Profile of HL7 blood pressure profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* component contains SystolicBP 0..1
+* component.code.coding contains snomedSBPSlice 1..1
+* component.code.coding[snomedSBPSlice] from http://snomed.info/fhir/ValueSet/syst-bp (extensible)
+* component.code.coding[snomedSBPSlice].system = "http://snomed.info/sct"
+* component contains DiastolicBP 0..1
+* component.code.coding contains snomedDBPSlice 1..1
+* component.code.coding[snomedDBPSlice] from http://snomed.info/fhir/ValueSet/dia-bp (extensible)
+* component.code.coding[snomedDBPSlice].system = "http://snomed.info/sct"
+
+Profile: RespRate
+Parent: http://hl7.org/fhir/StructureDefinition/resprate
+Id: resprate
+Title: "Respiratory Rate"
+Description: "Profile of HL7 respiratory rate profile with SNOMED CT binding in addition to 'magic value' binding from base profile."
+* code.coding contains snomedSlice 1..1
+* code.coding[snomedSlice] from http://snomed.info/fhir/ValueSet/resprate (extensible)
+* code.coding[snomedSlice].system = "http://snomed.info/sct"
+
+// End input/profiles
+
+// Begin input/conceptmaps
+// End input/conceptmaps
+
+// Begin input/vocabulary
+// VALUE SETS 
+
+ValueSet: SnomedBodyHeight
+Id: bodyheight
+Title: "Body Height Observable entity Codes"
+Description: "This value set contains concept codes for body height observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint << 248334005 | Length of body (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #248334005
+
+ValueSet: AllergyIntoleranceFindingCode
+Id: allergyintolerance-finding-code
+Title: "Allergy-Intolerance Finding Code"
+Description: "This value set contains concept codes for allergy or intolerance clinical findings. It includes codes from [SNOMED](http://snomed.info/sct) where concept is-a 420134006 | Propensity to adverse reaction (finding) |"
+* codes from system http://snomed.info/sct where concept is-a #420134006
+
+ValueSet: SnomedBodyTemp
+Id: bodytemp
+Title: "Core body temperature Observable entity Code"
+Description: "This value set contains concept codes for core body temperature observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint << 276885007 | Core body temperature (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #276885007
+
+ValueSet: SnomedHeadCircum
+Id: headcircum
+Title: "Head circumference Observable entity Code"
+Description: "This value set contains concept codes for head circumference observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 363812007 | Head circumference (observable entity) | MINUS << 248397001 | Head circumference centile (observable entity) |)"
+* codes from system http://snomed.info/sct where constraint = "(<< 363812007 | Head circumference (observable entity) | MINUS << 248397001 | Head circumference centile (observable entity) |)"
+
+ValueSet: SnomedOxygenSat
+Id: oxygensat
+Title: "Peripehral oxygen saturation Observable entity Code"
+Description: "This value set contains concept codes for peripheral oxygen saturation observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint <<431314004 | Peripheral oxygen saturation (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #431314004
+
+ValueSet: SnomedBodyWeightm
+Id: bodyweight
+Title: "Body weight Observable entity Code"
+Description: "This value set contains concept codes for body weight observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 27113001 | Body weight (observable entity) | MINUS (<< 248350002 | Reference weight (observable entity) | OR << 301334000 | Birth weight centile (observable entity) |))"
+* codes from system http://snomed.info/sct where constraint = "(<< 27113001 | Body weight (observable entity) | MINUS (<< 248350002 | Reference weight (observable entity) | OR << 301334000 | Birth weight centile (observable entity) |))"
+
+ValueSet: SnomedHeartRate
+Id: heartrate
+Title: "Heart rate Observable entity Code"
+Description: "This value set contains concept codes for heart rate observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 364075005 | Heart rate (observable entity) | MINUS 428420003 | Target heart rate (observable entity) |)"
+* codes from system http://snomed.info/sct where constraint = "(<< 364075005 | Heart rate (observable entity) | MINUS 428420003 | Target heart rate (observable entity) |)"
+
+ValueSet: SnomedRespRate
+Id: resprate
+Title: "Respiratory rate Observable entity Code"
+Description: "This value set contains concept codes for respiratory rate observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint << 86290005 | Respiratory rate (observable entity) |"
+* codes from system http://snomed.info/sct where concept is-a #86290005
+
+ValueSet: SnomedDiaBP
+Id: dia-bp
+Title: "Diastolic blood pressure Observable entity Code"
+Description: "This value set contains concept codes for diastolic blood pressure observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 271650006 | Diastolic blood pressure (observable entity) | MINUS (<< 314465004 | 24 hour diastolic blood pressure (observable entity) | OR << 716632005 | Baseline diastolic blood pressure (observable entity) | OR << 315613000 | Target diastolic blood pressure (observable entity) |))"
+* codes from system http://snomed.info/sct where constraint = "(<< 271650006 | Diastolic blood pressure (observable entity) | MINUS (<< 314465004 | 24 hour diastolic blood pressure (observable entity) | OR << 716632005 | Baseline diastolic blood pressure (observable entity) | OR << 315613000 | Target diastolic blood pressure (observable entity) |))"
+
+ValueSet: SnomedBMI
+Id: bmi
+Title: "BMI Observable entity Code"
+Description: "This value set contains concept codes for BMI observable entities. It includes the single code from [SNOMED](http://snomed.info/sct) 60621009 | Body mass index (observable entity) |"
+* http://snomed.info/sct#60621009 "Body mass index (observable entity)"
+
+ValueSet: SnomedSystBP
+Id: syst-bp
+Title: "Systolic blood pressure Observable entity Code"
+Description: "This value set contains concept codes for systolic blood pressure observable entities. It includes codes from [SNOMED](http://snomed.info/sct) meeting the constraint (<< 271649006 | Systolic blood pressure (observable entity) | MINUS (<< 314464000 | 24 hour systolic blood pressure (observable entity) | OR << 716579001 | Baseline systolic blood pressure (observable entity) | OR << 315612005 | Target systolic blood pressure (observable entity) |))"
+* codes from system http://snomed.info/sct where constraint = "(<< 271649006 | Systolic blood pressure (observable entity) | MINUS (<< 314464000 | 24 hour systolic blood pressure (observable entity) | OR << 716579001 | Baseline systolic blood pressure (observable entity) | OR << 315612005 | Target systolic blood pressure (observable entity) |))"
+
+// EXTENSIONS 
+
+Instance: spec-type
+InstanceOf: http://hl7.org/fhir/4.0/StructureDefinition/ConceptMap
+Title: "spec-type"
+* url = "http://hl7.org/fhir/ig/snomed/ConceptMap/spec-type"
+* version = "20130725"
+* name = "Specimen mapping from v2 table 0487 to SNOMED CT"
+* status = #draft
+* experimental = false
+* date = 2013-07-25
+* publisher = "FHIR project team (original source: LabMCoP)"
+* contact[0].telecom.system = #url
+* contact[0].telecom.value = "http://hl7.org/fhir"
+* contact[1].telecom.system = #url
+* contact[1].telecom.value = "http://www.phconnect.org/group/laboratorymessagingcommunityofpractice/forum/attachment/download?id=3       649725%3AUploadedFile%3A145786"
+* group.source = "http://hl7.org/fhir/v2/0487"
+* group.target = "http://snomed.info/sct"
+* group.element[0].code = #ACNE
+* group.element[0].target.code = #309068002
+* group.element[1].code = #ACNFLD
+* group.element[1].target.code = #119323008
+* group.element[1].target.comment = "HL7 term is a historical term. mapped to Pus"
+* group.element[1].target.product.property = "TypeModifier"
+* group.element[1].target.product.system = "http://snomed.info/sct"
+* group.element[2].code = #AIRS
+* group.element[2].target.code = #446302006
+* group.element[3].code = #ALL
+* group.element[3].target.code = #119376003
+* group.element[3].target.product.property = "TypeModifier"
+* group.element[3].target.product.system = "http://snomed.info/sct"
+* group.element[4].code = #AMP
+* group.element[4].target.code = #408654003
+* group.element[4].target.product.property = "http://snomed.info/id/246380002"
+* group.element[4].target.product.system = "http://snomed.info/sct"
+* group.element[5].code = #ANGI
+* group.element[5].target.code = #119312009
+* group.element[5].target.comment = "TBD in detail"
+* group.element[6].code = #ARTC
+* group.element[6].target.code = #119312009
+* group.element[6].target.comment = "TBD in detail"
+* group.element[7].code = #ASERU
+* group.element[7].target.equivalence = #unmatched
+* group.element[7].target.comment = "pending"
+* group.element[8].code = #ASP
+* group.element[8].target.code = #119295008
+* group.element[8].target.product.property = "http://snomed.info/id/246380002"
+* group.element[8].target.product.system = "http://snomed.info/sct"
+* group.element[9].code = #ATTE
+* group.element[9].target.equivalence = #unmatched
+* group.element[9].target.comment = "TBD"
+* group.element[10].code = #AUTOC
+* group.element[10].target.equivalence = #unmatched
+* group.element[10].target.comment = "TBD"
+* group.element[11].code = #AUTP
+* group.element[11].target.equivalence = #unmatched
+* group.element[11].target.comment = "This really is not a specimen per se - it is the state of the subject from whom the specimen          is collected, so it should be used as a  specimen type modifier ONLY!. Often this is indicated          with a special medical record number or other notation on the patient. needs to have specimen          type (e.g. SPM-4) and source site (SPM.8) and spatial orientation (SPM.9)"
+* group.element[12].code = #BBL
+* group.element[12].target.code = #119304001
+* group.element[13].code = #BCYST
+* group.element[13].target.equivalence = #unmatched
+* group.element[13].target.comment = "submitted (PLR155) with parent of  167874004^knee joint synovial fluid (specimen), with          specimen source topography 32361000^Popliteal fossa structure (body structure)"
+* group.element[13].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[13].target.product.system = "http://snomed.info/sct"
+* group.element[14].code = #BITE
+* group.element[14].target.equivalence = #unmatched
+* group.element[14].target.comment = "Submit for new term with parent 119365002"
+* group.element[15].code = #BLEB
+* group.element[15].target.code = #309049000
+* group.element[15].target.product.property = "TypeModifier"
+* group.element[15].target.product.system = "http://snomed.info/sct"
+* group.element[16].code = #BLIST
+* group.element[16].target.code = #309049000
+* group.element[16].target.product.property = "TypeModifier"
+* group.element[16].target.product.system = "http://snomed.info/sct"
+* group.element[17].code = #BOIL
+* group.element[17].target.code = #119295008
+* group.element[17].target.product[0].property = "TypeModifier"
+* group.element[17].target.product[0].system = "http://snomed.info/sct"
+* group.element[17].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[17].target.product[1].system = "http://snomed.info/sct"
+* group.element[18].code = #BON
+* group.element[18].target.code = #430268003
+* group.element[19].code = #BOWL
+* group.element[19].target.equivalence = #unmatched
+* group.element[19].target.comment = "Don't use this term for human samples - use Stool instead. animal would use small intestinal          contents, large intestinal contents"
+* group.element[20].code = #BPU
+* group.element[20].target.code = #119300005
+* group.element[21].code = #BRN
+* group.element[21].target.code = #119367005
+* group.element[22].code = #BRSH
+* group.element[22].target.code = #258415003
+* group.element[22].target.product.property = "http://snomed.info/id/246380002"
+* group.element[22].target.product.system = "http://snomed.info/sct"
+* group.element[23].code = #BRTH
+* group.element[23].target.code = #119336008
+* group.element[24].code = #BRUS
+* group.element[24].target.code = #309176002
+* group.element[24].target.product.property = "http://snomed.info/id/246380002"
+* group.element[24].target.product.system = "http://snomed.info/sct"
+* group.element[25].code = #BUB
+* group.element[25].target.code = #302795002
+* group.element[25].target.product[0].property = "TypeModifier"
+* group.element[25].target.product[0].system = "http://snomed.info/sct"
+* group.element[25].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[25].target.product[1].system = "http://snomed.info/sct"
+* group.element[26].code = #BULLA
+* group.element[26].target.code = #258482009
+* group.element[26].target.product.property = "TypeModifier"
+* group.element[26].target.product.system = "http://snomed.info/sct"
+* group.element[27].code = #BX
+* group.element[27].target.code = #258415003
+* group.element[27].target.product.property = "http://snomed.info/id/246380002"
+* group.element[27].target.product.system = "http://snomed.info/sct"
+* group.element[28].code = #CALC
+* group.element[28].target.code = #119350003
+* group.element[29].code = #CARBU
+* group.element[29].target.code = #309051001
+* group.element[29].target.product.property = "TypeModifier"
+* group.element[29].target.product.system = "http://snomed.info/sct"
+* group.element[30].code = #CAT
+* group.element[30].target.code = #119311002
+* group.element[31].code = #CBITE
+* group.element[31].target.equivalence = #unmatched
+* group.element[31].target.comment = "Submit for new term with parent 119365002"
+* group.element[32].code = #CLIPP
+* group.element[32].target.code = #119327009
+* group.element[32].target.comment = "Be more specific use either: 119326000^hair specimen or 119327009^nail specimen"
+* group.element[33].code = #CNJT
+* group.element[33].target.code = #119401005
+* group.element[34].code = #CNJT
+* group.element[34].target.code = #128160006
+* group.element[35].code = #CNJT
+* group.element[35].target.code = #258498002
+* group.element[36].code = #COL
+* group.element[36].target.code = #119329007
+* group.element[37].code = #CONE
+* group.element[37].target.code = #399713008
+* group.element[37].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[37].target.product[0].system = "http://snomed.info/sct"
+* group.element[37].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[37].target.product[1].system = "http://snomed.info/sct"
+* group.element[38].code = #CSCR
+* group.element[38].target.equivalence = #unmatched
+* group.element[38].target.comment = "submit for new term with parent 119365002^Specimen from wound (specimen)"
+* group.element[39].code = #CSERU
+* group.element[39].target.equivalence = #unmatched
+* group.element[39].target.comment = "pending"
+* group.element[40].code = #CSITE
+* group.element[40].target.code = #258507003
+* group.element[40].target.comment = "Prefer to have aspirate of the pus oozing out from cleaned insertion site - if swab is          all that can be obtained, then swab after cleaning, otherwise you may get a contaminated          specimen and a falsely identified infected central line. Do not just swab the reddened          area - that will just collect skin flora       "
+* group.element[40].target.product[0].property = "TypeModifier"
+* group.element[40].target.product[0].system = "http://snomed.info/sct"
+* group.element[40].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[40].target.product[1].system = "http://snomed.info/sct"
+* group.element[41].code = #CSMY
+* group.element[41].target.code = #309051001
+* group.element[42].code = #CST
+* group.element[42].target.code = #258453008
+* group.element[43].code = #CSVR
+* group.element[43].target.equivalence = #unmatched
+* group.element[43].target.comment = "TBD - may use blood and SPM-6"
+* group.element[44].code = #CTP
+* group.element[44].target.code = #119312009
+* group.element[44].target.comment = "TBD in detail"
+* group.element[45].code = #CVPS
+* group.element[45].target.code = #258507003
+* group.element[46].code = #CVPT
+* group.element[46].target.code = #119312009
+* group.element[46].target.comment = "TBD in detail"
+* group.element[46].target.product.property = "TypeModifier"
+* group.element[46].target.product.system = "http://snomed.info/sct"
+* group.element[47].code = #CYN
+* group.element[47].target.code = #119368000
+* group.element[47].target.product.property = "TypeModifier"
+* group.element[47].target.product.system = "http://snomed.info/sct"
+* group.element[48].code = #CYST
+* group.element[48].target.code = #119368000
+* group.element[49].code = #DBITE
+* group.element[49].target.equivalence = #unmatched
+* group.element[49].target.comment = "Submit for new term with parent 119365002"
+* group.element[50].code = #DCS
+* group.element[50].target.code = #119335007
+* group.element[51].code = #DEC
+* group.element[51].target.code = #258505006
+* group.element[52].code = #DEION
+* group.element[52].target.equivalence = #unmatched
+* group.element[52].target.comment = "TBD"
+* group.element[53].code = #DIA
+* group.element[53].target.code = #119360007
+* group.element[54].code = #DISCHG
+* group.element[54].target.code = #258439008
+* group.element[55].code = #DIV
+* group.element[55].target.code = #119376003
+* group.element[55].target.product.property = "TypeModifier"
+* group.element[55].target.product.system = "http://snomed.info/sct"
+* group.element[56].code = #DRN
+* group.element[56].target.code = #119306004
+* group.element[57].code = #DRNG
+* group.element[57].target.code = #258455001
+* group.element[57].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead: not          an acceptable specimen for micro - not specific enough term"
+* group.element[57].target.product.property = "http://snomed.info/id/246380002"
+* group.element[57].target.product.system = "http://snomed.info/sct"
+* group.element[58].code = #DRNGP
+* group.element[58].target.code = #309051001
+* group.element[58].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[58].target.product.property = "http://snomed.info/id/246380002"
+* group.element[58].target.product.system = "http://snomed.info/sct"
+* group.element[59].code = #EARW
+* group.element[59].target.code = #122580007
+* group.element[60].code = #EBRUSH
+* group.element[60].target.code = #309210009
+* group.element[60].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[60].target.product[0].system = "http://snomed.info/sct"
+* group.element[60].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[60].target.product[1].system = "http://snomed.info/sct"
+* group.element[61].code = #EEYE
+* group.element[61].target.equivalence = #unmatched
+* group.element[61].target.comment = "TBD"
+* group.element[62].code = #EFF
+* group.element[62].target.equivalence = #unmatched
+* group.element[62].target.comment = "TBD"
+* group.element[63].code = #EFFUS
+* group.element[63].target.code = #258440005
+* group.element[64].code = #EFOD
+* group.element[64].target.code = #119320006
+* group.element[65].code = #EISO
+* group.element[65].target.code = #258536003
+* group.element[66].code = #ELT
+* group.element[66].target.code = #119314005
+* group.element[67].code = #ENVIR
+* group.element[67].target.code = #119324002
+* group.element[68].code = #EOTH
+* group.element[68].target.equivalence = #unmatched
+* group.element[68].target.comment = "TBD"
+* group.element[69].code = #ESOI
+* group.element[69].target.equivalence = #unmatched
+* group.element[69].target.comment = "TBD"
+* group.element[70].code = #ESOS
+* group.element[70].target.equivalence = #unmatched
+* group.element[70].target.comment = "TBD"
+* group.element[71].code = #ETA
+* group.element[71].target.code = #119307008
+* group.element[71].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[71].target.product[0].system = "http://snomed.info/sct"
+* group.element[71].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[71].target.product[1].system = "http://snomed.info/sct"
+* group.element[72].code = #ETTP
+* group.element[72].target.code = #119312009
+* group.element[72].target.comment = "TBD in detail"
+* group.element[73].code = #ETTUB
+* group.element[73].target.code = #119307008
+* group.element[73].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[73].target.product[0].system = "http://snomed.info/sct"
+* group.element[73].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[73].target.product[1].system = "http://snomed.info/sct"
+* group.element[74].code = #EWHI
+* group.element[74].target.equivalence = #unmatched
+* group.element[74].target.comment = "TBD"
+* group.element[75].code = #EXG
+* group.element[75].target.code = #119336008
+* group.element[76].code = #EXS
+* group.element[76].target.equivalence = #unmatched
+* group.element[76].target.comment = "TBD"
+* group.element[77].code = #EXUDTE
+* group.element[77].target.code = #258441009
+* group.element[78].code = #FAW
+* group.element[78].target.equivalence = #unmatched
+* group.element[78].target.comment = "TBD"
+* group.element[79].code = #FBLOOD
+* group.element[79].target.code = #119297000
+* group.element[79].target.product.property = "TypeModifier"
+* group.element[79].target.product.system = "http://snomed.info/sct"
+* group.element[80].code = #FGA
+* group.element[80].target.code = #168139001
+* group.element[80].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[80].target.product.system = "http://snomed.info/sct"
+* group.element[81].code = #FIST
+* group.element[81].target.code = #119370009
+* group.element[82].code = #FLD
+* group.element[82].target.code = #309051001
+* group.element[83].code = #FLT
+* group.element[83].target.equivalence = #unmatched
+* group.element[83].target.comment = "TBD"
+* group.element[84].code = #FLU
+* group.element[84].target.code = #309051001
+* group.element[85].code = #FLUID
+* group.element[85].target.code = #258442002
+* group.element[86].code = #FOLEY
+* group.element[86].target.code = #119312009
+* group.element[86].target.comment = "TBD in detail"
+* group.element[87].code = #FRS
+* group.element[87].target.code = #258442002
+* group.element[87].target.comment = "this term is not specific enough, choose from terms that more accurately describe the          specimen"
+* group.element[87].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[87].target.product.system = "http://snomed.info/sct"
+* group.element[88].code = #FSCLP
+* group.element[88].target.code = #309502007
+* group.element[88].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[88].target.product.system = "http://snomed.info/sct"
+* group.element[89].code = #FUR
+* group.element[89].target.code = #119295008
+* group.element[89].target.comment = "Further describe the sample as tissue or pus. or by the collection method. The term boil          is not specifc to a body site - need to indicate source site (spm.8). preferred term is          Aspirate_Boil"
+* group.element[89].target.product.property = "TypeModifier"
+* group.element[89].target.product.system = "http://snomed.info/sct"
+* group.element[90].code = #GAS
+* group.element[90].target.code = #119317003
+* group.element[91].code = #GASA
+* group.element[91].target.code = #168137004
+* group.element[91].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[91].target.product[0].system = "http://snomed.info/sct"
+* group.element[91].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[91].target.product[1].system = "http://snomed.info/sct"
+* group.element[92].code = #GASAN
+* group.element[92].target.code = #119379005
+* group.element[92].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[92].target.product.system = "http://snomed.info/sct"
+* group.element[93].code = #GASBR
+* group.element[93].target.code = #309213006
+* group.element[93].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[93].target.product[0].system = "http://snomed.info/sct"
+* group.element[93].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[93].target.product[1].system = "http://snomed.info/sct"
+* group.element[94].code = #GASD
+* group.element[94].target.code = #258459007
+* group.element[94].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[94].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[94].target.product[0].system = "http://snomed.info/sct"
+* group.element[94].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[94].target.product[1].system = "http://snomed.info/sct"
+* group.element[95].code = #GAST
+* group.element[95].target.code = #258459007
+* group.element[96].code = #GENV
+* group.element[96].target.code = #119394009
+* group.element[97].code = #GRAFT
+* group.element[97].target.code = #440493002
+* group.element[98].code = #GRANU
+* group.element[98].target.code = #119376003
+* group.element[98].target.product.property = "TypeModifier"
+* group.element[98].target.product.system = "http://snomed.info/sct"
+* group.element[99].code = #GROSH
+* group.element[99].target.code = #119311002
+* group.element[99].target.comment = "TBD in detail"
+* group.element[100].code = #GSOL
+* group.element[100].target.equivalence = #unmatched
+* group.element[100].target.comment = "TBD"
+* group.element[101].code = #GSPEC
+* group.element[101].target.code = #309211008
+* group.element[101].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[101].target.product[0].system = "http://snomed.info/sct"
+* group.element[101].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[101].target.product[1].system = "http://snomed.info/sct"
+* group.element[102].code = #GT
+* group.element[102].target.equivalence = #unmatched
+* group.element[102].target.comment = "TBD"
+* group.element[103].code = #GTUBE
+* group.element[103].target.code = #258459007
+* group.element[103].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[103].target.product[0].property = "TypeModifier"
+* group.element[103].target.product[0].system = "http://snomed.info/sct"
+* group.element[103].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[103].target.product[1].system = "http://snomed.info/sct"
+* group.element[103].target.product[2].property = "http://snomed.info/id/3006873018"
+* group.element[103].target.product[2].system = "http://snomed.info/sct"
+* group.element[104].code = #HBITE
+* group.element[104].target.equivalence = #unmatched
+* group.element[104].target.comment = "Submit for new term with parent 119365002"
+* group.element[105].code = #HBLUD
+* group.element[105].target.code = #119297000
+* group.element[105].target.product.property = "TypeModifier"
+* group.element[105].target.product.system = "http://snomed.info/sct"
+* group.element[106].code = #HEMAQ
+* group.element[106].target.code = #119312009
+* group.element[106].target.comment = "TBD in detail"
+* group.element[107].code = #HEMO
+* group.element[107].target.code = #119312009
+* group.element[107].target.comment = "TBD in detail"
+* group.element[108].code = #HERNI
+* group.element[108].target.code = #119376003
+* group.element[109].code = #HEV
+* group.element[109].target.code = #119306004
+* group.element[110].code = #HIC
+* group.element[110].target.code = #119312009
+* group.element[110].target.comment = "TBD in detail"
+* group.element[110].target.product.property = "TypeModifier"
+* group.element[110].target.product.system = "http://snomed.info/sct"
+* group.element[111].code = #HYDC
+* group.element[111].target.code = #309051001
+* group.element[111].target.product.property = "TypeModifier"
+* group.element[111].target.product.system = "http://snomed.info/sct"
+* group.element[112].code = #IBITE
+* group.element[112].target.equivalence = #unmatched
+* group.element[112].target.comment = "Submit for new term with parent 119365002"
+* group.element[113].code = #ICYST
+* group.element[113].target.code = #309075001
+* group.element[114].code = #IDC
+* group.element[114].target.code = #119312009
+* group.element[114].target.comment = "TBD in detail"
+* group.element[115].code = #IHG
+* group.element[115].target.code = #119337004
+* group.element[116].code = #ILEO
+* group.element[116].target.code = #258455001
+* group.element[116].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead: stool          is what is expected, should use stool sample"
+* group.element[116].target.product.property = "TypeModifier"
+* group.element[116].target.product.system = "http://snomed.info/sct"
+* group.element[117].code = #ILLEG
+* group.element[117].target.equivalence = #unmatched
+* group.element[117].target.comment = "TBD"
+* group.element[118].code = #IMP
+* group.element[118].target.code = #439961009
+* group.element[119].code = #INCI
+* group.element[119].target.code = #438660002
+* group.element[120].code = #INFIL
+* group.element[120].target.equivalence = #unmatched
+* group.element[120].target.comment = "This describes a morphologic abnormality, not a sample"
+* group.element[121].code = #INS
+* group.element[121].target.code = #258614005
+* group.element[122].code = #INTRD
+* group.element[122].target.code = #119312009
+* group.element[122].target.comment = "TBD in detail"
+* group.element[123].code = #IT
+* group.element[123].target.code = #119307008
+* group.element[124].code = #IUD
+* group.element[124].target.equivalence = #unmatched
+* group.element[124].target.comment = "pending"
+* group.element[125].code = #IVCAT
+* group.element[125].target.code = #119312009
+* group.element[125].target.comment = "TBD in detail"
+* group.element[125].target.product.property = "TypeModifier"
+* group.element[125].target.product.system = "http://snomed.info/sct"
+* group.element[126].code = #IVFLD
+* group.element[126].target.code = #258649003
+* group.element[127].code = #IVTIP
+* group.element[127].target.code = #119312009
+* group.element[128].code = #JEJU
+* group.element[128].target.code = #258463000
+* group.element[128].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead: stool          is what is expected, should use stool sample"
+* group.element[128].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[128].target.product[0].system = "http://snomed.info/sct"
+* group.element[128].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[128].target.product[1].system = "http://snomed.info/sct"
+* group.element[129].code = #JNTFLD
+* group.element[129].target.code = #119332005
+* group.element[130].code = #JP
+* group.element[130].target.code = #309051001
+* group.element[130].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[130].target.product.property = "http://snomed.info/id/246380002"
+* group.element[130].target.product.system = "http://snomed.info/sct"
+* group.element[131].code = #KELOI
+* group.element[131].target.code = #440674008
+* group.element[131].target.product.property = "http://snomed.info/id/246380002"
+* group.element[131].target.product.system = "http://snomed.info/sct"
+* group.element[132].code = #KIDFLD
+* group.element[132].target.code = #309051001
+* group.element[132].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[132].target.product.system = "http://snomed.info/sct"
+* group.element[133].code = #LAVG
+* group.element[133].target.code = #258607008
+* group.element[133].target.product.property = "http://snomed.info/id/246380002"
+* group.element[133].target.product.system = "http://snomed.info/sct"
+* group.element[134].code = #LAVGG
+* group.element[134].target.code = #168138009
+* group.element[134].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[134].target.product[0].system = "http://snomed.info/sct"
+* group.element[134].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[134].target.product[1].system = "http://snomed.info/sct"
+* group.element[135].code = #LAVGP
+* group.element[135].target.code = #440137008
+* group.element[136].code = #LAVPG
+* group.element[136].target.code = #440674008
+* group.element[136].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[136].target.product[0].system = "http://snomed.info/sct"
+* group.element[136].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[136].target.product[1].system = "http://snomed.info/sct"
+* group.element[137].code = #LENS1
+* group.element[137].target.code = #440473005
+* group.element[138].code = #LENS2
+* group.element[138].target.equivalence = #unmatched
+* group.element[138].target.comment = "TBD"
+* group.element[139].code = #LESN
+* group.element[139].target.code = #309049000
+* group.element[139].target.comment = "should be more specific what kind of lesion is observed - be more specific is it a wound,          abscess, mass - specify! Ask SNOMED CT to mark it as a grouper term only (309049000)"
+* group.element[140].code = #LIQ
+* group.element[140].target.code = #258442002
+* group.element[141].code = #LIQO
+* group.element[141].target.equivalence = #unmatched
+* group.element[141].target.comment = "TBD"
+* group.element[142].code = #LSAC
+* group.element[142].target.code = #258450006
+* group.element[142].target.comment = "The HL7 term is a historical term Mapped to CSF obtained by lumbar puncture"
+* group.element[142].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[142].target.product.system = "http://snomed.info/sct"
+* group.element[143].code = #MAHUR
+* group.element[143].target.code = #119312009
+* group.element[143].target.comment = "TBD in detail"
+* group.element[144].code = #MASS
+* group.element[144].target.code = #420548004
+* group.element[144].target.product.property = "TypeModifier"
+* group.element[144].target.product.system = "http://snomed.info/sct"
+* group.element[145].code = #MBLD
+* group.element[145].target.code = #119345009
+* group.element[146].code = #MUCOS
+* group.element[146].target.code = #119376003
+* group.element[146].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[146].target.product.system = "http://snomed.info/sct"
+* group.element[147].code = #MUCUS
+* group.element[147].target.code = #258483004
+* group.element[148].code = #NASDR
+* group.element[148].target.code = #258474009
+* group.element[148].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[148].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[148].target.product[0].system = "http://snomed.info/sct"
+* group.element[148].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[148].target.product[1].system = "http://snomed.info/sct"
+* group.element[149].code = #NEDL
+* group.element[149].target.equivalence = #unmatched
+* group.element[149].target.comment = "TBD"
+* group.element[150].code = #NEPH
+* group.element[150].target.code = #438660002
+* group.element[151].code = #NGASP
+* group.element[151].target.code = #302794003
+* group.element[151].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[151].target.product[0].system = "http://snomed.info/sct"
+* group.element[151].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[151].target.product[1].system = "http://snomed.info/sct"
+* group.element[152].code = #NGAST
+* group.element[152].target.code = #258459007
+* group.element[152].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[152].target.product[0].property = "TypeModifier"
+* group.element[152].target.product[0].system = "http://snomed.info/sct"
+* group.element[152].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[152].target.product[1].system = "http://snomed.info/sct"
+* group.element[152].target.product[2].property = "http://snomed.info/id/3006873018"
+* group.element[152].target.product[2].system = "http://snomed.info/sct"
+* group.element[153].code = #NGS
+* group.element[153].target.code = #438660002
+* group.element[154].code = #NODUL
+* group.element[154].target.equivalence = #unmatched
+* group.element[154].target.comment = "pending"
+* group.element[155].code = #NSECR
+* group.element[155].target.code = #168141000
+* group.element[156].code = #ORH
+* group.element[156].target.code = #123038009
+* group.element[157].code = #ORL
+* group.element[157].target.equivalence = #unmatched
+* group.element[157].target.comment = "be more precise use ulcer, tumor, vesicle"
+* group.element[157].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[157].target.product.system = "http://snomed.info/sct"
+* group.element[158].code = #OTH
+* group.element[158].target.code = #123038009
+* group.element[159].code = #PACEM
+* group.element[159].target.equivalence = #unmatched
+* group.element[159].target.comment = "TBD"
+* group.element[160].code = #PCFL
+* group.element[160].target.code = #122571007
+* group.element[161].code = #PDSIT
+* group.element[161].target.code = #438660002
+* group.element[162].code = #PDTS
+* group.element[162].target.equivalence = #unmatched
+* group.element[162].target.comment = "submitted for code"
+* group.element[163].code = #PELVA
+* group.element[163].target.code = #119371008
+* group.element[163].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[163].target.product.system = "http://snomed.info/sct"
+* group.element[164].code = #PENIL
+* group.element[164].target.equivalence = #unmatched
+* group.element[164].target.comment = "need to know what kind of lesion, so map to: UlcerTissue_penile, VesicleFluid_penile,          Wound_penile, Mass tissue_penile, Necrotic tissue_penile, AbscessAspirate_penile, Anything          else?"
+* group.element[164].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[164].target.product.system = "http://snomed.info/sct"
+* group.element[165].code = #PERIA
+* group.element[165].target.code = #119371008
+* group.element[165].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[165].target.product.system = "http://snomed.info/sct"
+* group.element[166].code = #PILOC
+* group.element[166].target.code = #119368000
+* group.element[167].code = #PINS
+* group.element[167].target.code = #438660002
+* group.element[168].code = #PIS
+* group.element[168].target.code = #258507003
+* group.element[169].code = #PLAN
+* group.element[169].target.code = #119301009
+* group.element[170].code = #PLAS
+* group.element[170].target.code = #119361006
+* group.element[171].code = #PLB
+* group.element[171].target.code = #119305000
+* group.element[172].code = #PLEVS
+* group.element[172].target.code = #119364003
+* group.element[172].target.product.property = "TypeModifier"
+* group.element[172].target.product.system = "http://snomed.info/sct"
+* group.element[173].code = #PND
+* group.element[173].target.code = #258439008
+* group.element[173].target.comment = "Historical term -though in this case more often used for discharge"
+* group.element[173].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[173].target.product[0].system = "http://snomed.info/sct"
+* group.element[173].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[173].target.product[1].system = "http://snomed.info/sct"
+* group.element[174].code = #POL
+* group.element[174].target.code = #119376003
+* group.element[174].target.product.property = "TypeModifier"
+* group.element[174].target.product.system = "http://snomed.info/sct"
+* group.element[175].code = #POPGS
+* group.element[175].target.code = #440493002
+* group.element[175].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[175].target.product.system = "http://snomed.info/sct"
+* group.element[176].code = #POPLG
+* group.element[176].target.code = #440493002
+* group.element[176].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[176].target.product.system = "http://snomed.info/sct"
+* group.element[177].code = #POPLV
+* group.element[177].target.equivalence = #unmatched
+* group.element[177].target.comment = "TBD"
+* group.element[178].code = #PORTA
+* group.element[178].target.code = #119311002
+* group.element[178].target.comment = "TBD in detail"
+* group.element[179].code = #PPP
+* group.element[179].target.code = #119362004
+* group.element[180].code = #PROST
+* group.element[180].target.code = #438660002
+* group.element[181].code = #PRP
+* group.element[181].target.code = #119363009
+* group.element[182].code = #PSC
+* group.element[182].target.code = #119368000
+* group.element[183].code = #PUNCT
+* group.element[183].target.code = #119365002
+* group.element[183].target.product.property = "TypeModifier"
+* group.element[183].target.product.system = "http://snomed.info/sct"
+* group.element[184].code = #PUS
+* group.element[184].target.code = #119323008
+* group.element[185].code = #PUSFR
+* group.element[185].target.code = #119323008
+* group.element[185].target.product.property = "TypeModifier"
+* group.element[185].target.product.system = "http://snomed.info/sct"
+* group.element[186].code = #PUST
+* group.element[186].target.code = #119323008
+* group.element[186].target.product.property = "TypeModifier"
+* group.element[186].target.product.system = "http://snomed.info/sct"
+* group.element[187].code = #QC3
+* group.element[187].target.equivalence = #unmatched
+* group.element[187].target.comment = "TBD"
+* group.element[188].code = #RANDU
+* group.element[188].target.code = #278020009
+* group.element[189].code = #RBITE
+* group.element[189].target.equivalence = #unmatched
+* group.element[189].target.comment = "Submit for new term with parent: 119365002"
+* group.element[190].code = #RECT
+* group.element[190].target.code = #119339001
+* group.element[190].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead: stool          is what is expected, should use stool sample"
+* group.element[190].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[190].target.product[0].system = "http://snomed.info/sct"
+* group.element[190].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[190].target.product[1].system = "http://snomed.info/sct"
+* group.element[191].code = #RECTA
+* group.element[191].target.code = #119371008
+* group.element[191].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[191].target.product.system = "http://snomed.info/sct"
+* group.element[192].code = #RENALC
+* group.element[192].target.code = #258420003
+* group.element[192].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[192].target.product.system = "http://snomed.info/sct"
+* group.element[193].code = #RENC
+* group.element[193].target.code = #258453008
+* group.element[193].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[193].target.product.system = "http://snomed.info/sct"
+* group.element[194].code = #RES
+* group.element[194].target.code = #258603007
+* group.element[195].code = #SAL
+* group.element[195].target.code = #119342007
+* group.element[196].code = #SCAR
+* group.element[196].target.code = #119376003
+* group.element[197].code = #SCLV
+* group.element[197].target.code = #119312009
+* group.element[197].target.comment = "TBD in detail"
+* group.element[197].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[197].target.product.system = "http://snomed.info/sct"
+* group.element[198].code = #SCROA
+* group.element[198].target.code = #119371008
+* group.element[198].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[198].target.product.system = "http://snomed.info/sct"
+* group.element[199].code = #SECRE
+* group.element[199].target.code = #432825001
+* group.element[200].code = #SER
+* group.element[200].target.code = #119364003
+* group.element[201].code = #SHU
+* group.element[201].target.code = #119295008
+* group.element[201].target.comment = "Preferred is aspiration with sterile syringe from inflamed area. Specify body location          of shunt site"
+* group.element[201].target.product[0].property = "TypeModifier"
+* group.element[201].target.product[0].system = "http://snomed.info/sct"
+* group.element[201].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[201].target.product[1].system = "http://snomed.info/sct"
+* group.element[202].code = #SHUNF
+* group.element[202].target.code = #446861007
+* group.element[202].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[202].target.product[0].system = "http://snomed.info/sct"
+* group.element[202].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[202].target.product[1].system = "http://snomed.info/sct"
+* group.element[203].code = #SHUNT
+* group.element[203].target.equivalence = #unmatched
+* group.element[203].target.comment = "TBD"
+* group.element[204].code = #SITE
+* group.element[204].target.equivalence = #unmatched
+* group.element[204].target.comment = "TBD"
+* group.element[205].code = #SKBP
+* group.element[205].target.code = #309066003
+* group.element[205].target.product.property = "http://snomed.info/id/246380002"
+* group.element[205].target.product.system = "http://snomed.info/sct"
+* group.element[206].code = #SKN
+* group.element[206].target.code = #119325001
+* group.element[207].code = #SMM
+* group.element[207].target.code = #420548004
+* group.element[207].target.product.property = "TypeModifier"
+* group.element[207].target.product.system = "http://snomed.info/sct"
+* group.element[208].code = #SNV
+* group.element[208].target.code = #119332005
+* group.element[209].code = #SPRM
+* group.element[209].target.code = #119349003
+* group.element[210].code = #SPRP
+* group.element[210].target.code = #119312009
+* group.element[210].target.comment = "TBD in detail"
+* group.element[211].code = #SPRPB
+* group.element[211].target.code = #119312009
+* group.element[211].target.comment = "TBD in detail"
+* group.element[212].code = #SPS
+* group.element[212].target.equivalence = #unmatched
+* group.element[212].target.comment = "TBD"
+* group.element[213].code = #SPT
+* group.element[213].target.code = #119334006
+* group.element[214].code = #SPTC
+* group.element[214].target.code = #119335007
+* group.element[215].code = #SPTT
+* group.element[215].target.code = #258609006
+* group.element[216].code = #SPUT1
+* group.element[216].target.equivalence = #unmatched
+* group.element[216].target.comment = "TBD"
+* group.element[217].code = #SPUTIN
+* group.element[217].target.code = #258610001
+* group.element[218].code = #SPUTSP
+* group.element[218].target.code = #119335007
+* group.element[219].code = #STER
+* group.element[219].target.equivalence = #unmatched
+* group.element[219].target.comment = "TBD"
+* group.element[220].code = #STL
+* group.element[220].target.code = #119339001
+* group.element[221].code = #STONE
+* group.element[221].target.code = #119350003
+* group.element[221].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[221].target.product.system = "http://snomed.info/sct"
+* group.element[222].code = #SUBMA
+* group.element[222].target.code = #119371008
+* group.element[222].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[222].target.product.system = "http://snomed.info/sct"
+* group.element[223].code = #SUBMX
+* group.element[223].target.code = #119371008
+* group.element[223].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[223].target.product.system = "http://snomed.info/sct"
+* group.element[224].code = #SUMP
+* group.element[224].target.code = #446562005
+* group.element[224].target.comment = "Historical term - consider what is being drained and indicate that in SPM-4 instead"
+* group.element[224].target.product.property = "http://snomed.info/id/246380002"
+* group.element[224].target.product.system = "http://snomed.info/sct"
+* group.element[225].code = #SUP
+* group.element[225].target.code = #122575003
+* group.element[225].target.product.property = "http://snomed.info/id/246380002"
+* group.element[225].target.product.system = "http://snomed.info/sct"
+* group.element[226].code = #SUTUR
+* group.element[226].target.equivalence = #unmatched
+* group.element[226].target.comment = "TBD"
+* group.element[227].code = #SWGZ
+* group.element[227].target.code = #119312009
+* group.element[227].target.comment = "TBD in detail"
+* group.element[228].code = #TASP
+* group.element[228].target.code = #122877000
+* group.element[228].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[228].target.product[0].system = "http://snomed.info/sct"
+* group.element[228].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[228].target.product[1].system = "http://snomed.info/sct"
+* group.element[229].code = #TISS
+* group.element[229].target.code = #119376003
+* group.element[230].code = #TISU
+* group.element[230].target.code = #122593002
+* group.element[231].code = #TLC
+* group.element[231].target.code = #119312009
+* group.element[231].target.comment = "TBD in detail"
+* group.element[232].code = #TRAC
+* group.element[232].target.code = #438660002
+* group.element[233].code = #TRANS
+* group.element[233].target.code = #258538002
+* group.element[234].code = #TSERU
+* group.element[234].target.code = #119364003
+* group.element[234].target.product.property = "TypeModifier"
+* group.element[234].target.product.system = "http://snomed.info/sct"
+* group.element[235].code = #TSTES
+* group.element[235].target.code = #119371008
+* group.element[235].target.product.property = "http://snomed.info/id/3006873018"
+* group.element[235].target.product.system = "http://snomed.info/sct"
+* group.element[236].code = #TTRA
+* group.element[236].target.code = #258480001
+* group.element[236].target.product.property = "http://snomed.info/id/246380002"
+* group.element[236].target.product.system = "http://snomed.info/sct"
+* group.element[237].code = #TUBES
+* group.element[237].target.code = #119310001
+* group.element[238].code = #TUMOR
+* group.element[238].target.code = #258435002
+* group.element[239].code = #TZANC
+* group.element[239].target.equivalence = #unmatched
+* group.element[239].target.comment = "This is the name of a lab test. A skin sample is examined for viral inclusions."
+* group.element[240].code = #UDENT
+* group.element[240].target.code = #123038009
+* group.element[241].code = #UR
+* group.element[241].target.code = #122575003
+* group.element[242].code = #URC
+* group.element[242].target.code = #122880004
+* group.element[243].code = #URINB
+* group.element[243].target.code = #122575003
+* group.element[243].target.product.property = "http://snomed.info/id/246380002"
+* group.element[243].target.product.system = "http://snomed.info/sct"
+* group.element[244].code = #URINC
+* group.element[244].target.code = #446846006
+* group.element[245].code = #URINM
+* group.element[245].target.code = #258574006
+* group.element[245].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[245].target.product[0].system = "http://snomed.info/sct"
+* group.element[245].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[245].target.product[1].system = "http://snomed.info/sct"
+* group.element[246].code = #URINN
+* group.element[246].target.code = #446277003
+* group.element[246].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[246].target.product[0].system = "http://snomed.info/sct"
+* group.element[246].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[246].target.product[1].system = "http://snomed.info/sct"
+* group.element[247].code = #URINP
+* group.element[247].target.equivalence = #unmatched
+* group.element[247].target.comment = "TBD"
+* group.element[248].code = #URT
+* group.element[248].target.code = #122565001
+* group.element[249].code = #USCOP
+* group.element[249].target.equivalence = #unmatched
+* group.element[249].target.comment = "NEW specimenTERM 7"
+* group.element[249].target.product[0].property = "http://snomed.info/id/246380002"
+* group.element[249].target.product[0].system = "http://snomed.info/sct"
+* group.element[249].target.product[1].property = "http://snomed.info/id/3006873018"
+* group.element[249].target.product[1].system = "http://snomed.info/sct"
+* group.element[250].code = #USPEC
+* group.element[250].target.code = #123038009
+* group.element[251].code = #VASTIP
+* group.element[251].target.code = #119312009
+* group.element[251].target.comment = "TBD in detail"
+* group.element[252].code = #VENT
+* group.element[252].target.code = #119312009
+* group.element[252].target.comment = "TBD in detail"
+* group.element[253].code = #VITF
+* group.element[253].target.code = #258438000
+* group.element[254].code = #VOM
+* group.element[254].target.code = #122572000
+* group.element[255].code = #WASH
+* group.element[255].target.code = #440674008
+* group.element[256].code = #WASI
+* group.element[256].target.code = #122609004
+* group.element[257].code = #WAT
+* group.element[257].target.code = #119318008
+* group.element[258].code = #WB
+* group.element[258].target.equivalence = #unmatched
+* group.element[258].target.comment = "Bloodbanking term ONLY now map to blood and the respective preservative"
+* group.element[259].code = #WEN
+* group.element[259].target.code = #309075001
+* group.element[260].code = #WICK
+* group.element[260].target.equivalence = #unmatched
+* group.element[260].target.comment = "TBD"
+* group.element[261].code = #WND
+* group.element[261].target.code = #119365002
+* group.element[262].code = #WNDA
+* group.element[262].target.code = #119366001
+* group.element[263].code = #WNDD
+* group.element[263].target.code = #122566000
+* group.element[263].target.product.property = "http://snomed.info/id/246380002"
+* group.element[263].target.product.system = "http://snomed.info/sct"
+* group.element[264].code = #WNDE
+* group.element[264].target.code = #122568004
+* group.element[265].code = #WORM
+* group.element[265].target.code = #258618008
+* group.element[266].code = #WRT
+* group.element[266].target.code = #309068002
+* group.element[267].code = #WWA
+* group.element[267].target.code = #119318008
+* group.element[268].code = #WWO
+* group.element[268].target.equivalence = #unmatched
+* group.element[268].target.comment = "TBD"
+* group.element[269].code = #WWT
+* group.element[269].target.equivalence = #unmatched
+* group.element[269].target.comment = "TBD"
+* group.element[270].code = #CSITE
+* group.element[270].target.equivalence = #unmatched
+* group.element[270].target.comment = "Prefer to have aspirate of the pus oozing out from cleaned insertion site - if swab is          all that can be obtained, then swab after cleaning, otherwise you may get a contaminated          specimen and a falsely identified infected central line. Do not just swab the reddened          area - that will just collect skin flora"
+* group.element[270].target.product[0].property = "TypeModifier"
+* group.element[270].target.product[0].system = "http://snomed.info/sct"
+* group.element[270].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[270].target.product[1].system = "http://snomed.info/sct"
+* group.element[270].target.product[2].property = "http://snomed.info/id/3006873018"
+* group.element[270].target.product[2].system = "http://snomed.info/sct"
+* group.element[271].code = #CLIPP
+* group.element[271].target.equivalence = #unmatched
+* group.element[271].target.comment = "Be more specific use either: 119326000^hair specimen, or 119327009^nail specimen"
+* group.element[271].target.product.property = "TypeModifier"
+* group.element[271].target.product.system = "http://snomed.info/sct"
+* group.element[272].code = #SHU
+* group.element[272].target.equivalence = #unmatched
+* group.element[272].target.comment = "assume swab from shunt site for mapping here - clean surface of skin prior to expressing          the shunt site - preferred is aspiration with sterile syringe should use SPM.8 to specify          body approximate match location of shunt site"
+* group.element[272].target.product[0].property = "TypeModifier"
+* group.element[272].target.product[0].system = "http://snomed.info/sct"
+* group.element[272].target.product[1].property = "http://snomed.info/id/246380002"
+* group.element[272].target.product[1].system = "http://snomed.info/sct"
+
+// End input/vocabulary
+
+// EXTENSIONS 
+
+Instance: snomed-ig
+InstanceOf: http://hl7.org/fhir/4.0/StructureDefinition/ImplementationGuide
+Title: "snomed-ig"
+* url = "http://snomed.info/fhir/ImplementationGuide/ig"
+* version = "0.1.0"
+* name = "SNOMEDCTImplementationGuideforFHIR"
+* title = "SNOMED CT Implementation Guide for FHIR"
+* status = #draft
+* experimental = false
+* publisher = "SNOMED International"
+* contact.telecom.system = #other
+* contact.telecom.value = "https://www.snomed.org/"
+* description = "A brief description of what MyIG is about (probably the same text as in your readme)"
+* jurisdiction.coding = http://unstats.un.org/unsd/methods/m49/m49.htm#001
+* packageId = "hl7.fhir.uv.snomed"
+* license = #CC0-1.0
+* fhirVersion = #4.0.1
+* definition.page.name[x] = "toc.html"
+* definition.page.title = "Table of Contents"
+* definition.page.generation = #html
+* definition.page.page[0].name[x] = "index.html"
+* definition.page.page[0].title = "SNOMED CT Implementation Guide Homepage"
+* definition.page.page[0].generation = #markdown
+* definition.page.page[1].name[x] = "introduction.html"
+* definition.page.page[1].title = "Introduction to using SNOMED with FHIR"
+* definition.page.page[1].generation = #markdown
+* definition.page.page[2].name[x] = "general_imp_consider.html"
+* definition.page.page[2].title = "General Implementation Considerations"
+* definition.page.page[2].generation = #markdown
+* definition.page.page[3].name[x] = "sct_specific_behaviours.html"
+* definition.page.page[3].title = "SNOMED CT Specific Behaviours"
+* definition.page.page[3].generation = #markdown
+* definition.page.page[4].name[x] = "ts_with_sct.html"
+* definition.page.page[4].title = "Implementing Terminology Services with SNOMED CT"
+* definition.page.page[4].generation = #markdown
+* definition.page.page[5].name[x] = "profiles.html"
+* definition.page.page[5].title = "Profiles"
+* definition.page.page[5].generation = #markdown
+* definition.page.page[6].name[x] = "terminology_binding.html"
+* definition.page.page[6].title = "Terminology Binding"
+* definition.page.page[6].generation = #markdown
+* definition.page.page[7].name[x] = "test_suites.html"
+* definition.page.page[7].title = "Test Suites for using SNOMED CT with FHIR Servers"
+* definition.page.page[7].generation = #markdown
+* definition.page.page[8].name[x] = "faq.html"
+* definition.page.page[8].title = "Frequently Asked Questions"
+* definition.page.page[8].generation = #markdown
+* definition.page.page[9].name[x] = "codesystems.html"
+* definition.page.page[9].title = "Code Systems"
+* definition.page.page[9].generation = #markdown
+* definition.page.page[10].name[x] = "conceptmaps.html"
+* definition.page.page[10].title = "Concept Maps"
+* definition.page.page[10].generation = #markdown
+* definition.page.page[11].name[x] = "valuesets.html"
+* definition.page.page[11].title = "Value Sets"
+* definition.page.page[11].generation = #markdown
+* definition.page.page[12].name[x] = "downloads.html"
+* definition.page.page[12].title = "Useful Downloads"
+* definition.page.page[12].generation = #markdown
+* definition.page.page[13].name[x] = "versions.html"
+* definition.page.page[13].title = "Version Management Policy"
+* definition.page.page[13].generation = #markdown
+* definition.parameter[0].code = "copyrightyear"
+* definition.parameter[0].value = "2020+"
+* definition.parameter[1].code = "releaselabel"
+* definition.parameter[1].value = "CI Build"
+* definition.parameter[2].code = "find-other-resources"
+* definition.parameter[2].value = "true"
+
