@@ -16,7 +16,9 @@ version: 0.0.3
 name: SNOMEDCTImplementationGuideforFHIR
 title: SNOMED CT Implementation Guide for FHIR
 status: active
-publisher: SNOMED International
+publisher:
+  name: SNOMED on FHIR project group
+  url: https://confluence.ihtsdotools.org/display/FHIR/SNOMED+on+FHIR
 description: Describes how to use SNOMED CT in FHIR
 license: CC0-1.0
 fhirVersion: 4.0.1
