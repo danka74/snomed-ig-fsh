@@ -2,21 +2,13 @@
 
 This IG uses [FSH](https://build.fhir.org/ig/HL7/fhir-shorthand/).
 
-To install (at least version 0.13.2):
+To install (tested with version 0.14.0):
 ```
 npm install -g fsh-sushi
 ```
 
-To build - part 1:
+To build using HL7 IG Publisher and Ontoserver:
 ```
 cd snomed-ig-fsh
-sushi .
+java -Xmx4G -jar org.hl7.fhir.publisher.jar -ig . -tx https://r4.ontoserver.csiro.au/fhir
 ```
-
-To build - part 2:
-```
-cd build
-./_updatePublisher.sh 
-./_genonce.sh -tx <URL for the terminology server instance>
-```
-URL for the terminology server will be provided.
