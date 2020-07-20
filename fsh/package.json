@@ -1,7 +1,7 @@
 {
-  "name": "hl7.fhir.uv.snomed",
+  "name": "snomed-ig",
   "version": "0.0.3",
-  "canonical": "http://hl7.org/fhir/ig/snomed",
+  "canonical": "http://snomed.info/fhir/ig/snomed",
   "url": "http://snomed.info",
   "title": "SNOMED CT Implementation Guide for FHIR",
   "description": "Describes how to use SNOMED CT in FHIR",

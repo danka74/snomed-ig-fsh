@@ -1,8 +1,8 @@
 Profile:        SnomedSpecimen
 Parent:         Specimen
 Id:             snomed-specimen
-Title:          "SNOMED CT Specimen profile"
-Description:    "A profile of the Specimen resource for use with SNOMED CT coding."
+Title:          "Specimen"
+Description:    "Profile of the Specimen resource for use with SNOMED CT coding."
 * type 1..1
 * type from SpecimenTypeValueSet (extensible) // <<123038009 | Specimen (specimen) |
 * collection.method from SpecimenCollectionMethodValueSet (extensible) // overlapping with 118171006 | Specimen procedure (attribute) |
